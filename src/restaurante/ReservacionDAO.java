@@ -1,87 +1,96 @@
 package restaurante;
+
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 public class ReservacionDAO {
-    private static final String ARCHIVO_DATOS = "backup.txt"; // Nombre del archivo definido como "backup.txt"
+    private static final String ARCHIVO_DATOS = "backup.txt";
     private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
-    // Agrega una reservación al archivo
-    public void agregarReservacion(Reservacion reservacion) {
-        // Leer las líneas existentes del archivo
-        List<String> lineas = ArchivoHelper.leerDesdeArchivo(ARCHIVO_DATOS);
-        // Añadir la nueva reservación al final de la lista
-        lineas.add("RESERVACION;" + reservacion.getId() + ";" + reservacion.getClienteId() + ";" + sdf.format(reservacion.getFecha()) + ";" + reservacion.getNumeroPersonas());
-        // Guardar la lista actualizada en el archivo
-        ArchivoHelper.guardarEnArchivo(ARCHIVO_DATOS, lineas);
+    public ReservacionDAO() {
     }
 
-    // Obtiene una reservación por su ID
+    public void agregarReservacion(Reservacion reservacion) {
+        List<String> lineas = ArchivoHelper.leerDesdeArchivo("backup.txt");
+        String var10001 = reservacion.getId();
+        lineas.add("RESERVACION;" + var10001 + ";" + reservacion.getClienteId() + ";" + sdf.format(reservacion.getFecha()) + ";" + reservacion.getNumeroPersonas());
+        ArchivoHelper.guardarEnArchivo("backup.txt", lineas);
+    }
+
     public Reservacion obtenerReservacion(String id) {
-        // Leer las líneas existentes del archivo
-        List<String> lineas = ArchivoHelper.leerDesdeArchivo(ARCHIVO_DATOS);
-        for (String linea : lineas) {
-            String[] partes = linea.split(";");
-            // Si se encuentra una reservación con el ID especificado, se crea y retorna el objeto Reservacion
-            if (partes[0].equals("RESERVACION") && partes[1].equals(id)) {
-                try {
-                    Date fecha = sdf.parse(partes[3]);
-                    return new Reservacion(partes[1], partes[2], fecha, Integer.parseInt(partes[4]));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        List<String> lineas = ArchivoHelper.leerDesdeArchivo("backup.txt");
+        Iterator var3 = lineas.iterator();
+
+        while(true) {
+            String[] partes;
+            do {
+                do {
+                    if (!var3.hasNext()) {
+                        return null;
+                    }
+
+                    String linea = (String)var3.next();
+                    partes = linea.split(";");
+                } while(!partes[0].equals("RESERVACION"));
+            } while(!partes[1].equals(id));
+
+            try {
+                Date fecha = sdf.parse(partes[3]);
+                return new Reservacion(partes[1], partes[2], fecha, Integer.parseInt(partes[4]));
+            } catch (Exception var7) {
+                Exception e = var7;
+                e.printStackTrace();
             }
         }
-        return null; // Si no se encuentra la reservación, se retorna null
     }
 
-    // Actualiza una reservación existente
     public void actualizarReservacion(Reservacion reservacionActualizada) {
-        // Leer las líneas existentes del archivo
-        List<String> lineas = ArchivoHelper.leerDesdeArchivo(ARCHIVO_DATOS);
-        for (int i = 0; i < lineas.size(); i++) {
-            String[] partes = lineas.get(i).split(";");
-            // Si se encuentra la reservación a actualizar, se modifica su información
+        List<String> lineas = ArchivoHelper.leerDesdeArchivo("backup.txt");
+
+        for(int i = 0; i < lineas.size(); ++i) {
+            String[] partes = ((String)lineas.get(i)).split(";");
             if (partes[0].equals("RESERVACION") && partes[1].equals(reservacionActualizada.getId())) {
-                lineas.set(i, "RESERVACION;" + reservacionActualizada.getId() + ";" + reservacionActualizada.getClienteId() + ";" + sdf.format(reservacionActualizada.getFecha()) + ";" + reservacionActualizada.getNumeroPersonas());
-                ArchivoHelper.guardarEnArchivo(ARCHIVO_DATOS, lineas); // Guardar la lista actualizada en el archivo
+                String var10002 = reservacionActualizada.getId();
+                lineas.set(i, "RESERVACION;" + var10002 + ";" + reservacionActualizada.getClienteId() + ";" + sdf.format(reservacionActualizada.getFecha()) + ";" + reservacionActualizada.getNumeroPersonas());
+                ArchivoHelper.guardarEnArchivo("backup.txt", lineas);
                 return;
             }
         }
+
     }
 
-    // Elimina una reservación por su ID
     public void eliminarReservacion(String id) {
-        // Leer las líneas existentes del archivo
-        List<String> lineas = ArchivoHelper.leerDesdeArchivo(ARCHIVO_DATOS);
-        // Remover la reservación con el ID especificado
-        lineas.removeIf(linea -> {
+        List<String> lineas = ArchivoHelper.leerDesdeArchivo("backup.txt");
+        lineas.removeIf((linea) -> {
             String[] partes = linea.split(";");
             return partes[0].equals("RESERVACION") && partes[1].equals(id);
         });
-        // Guardar la lista actualizada en el archivo
-        ArchivoHelper.guardarEnArchivo(ARCHIVO_DATOS, lineas);
+        ArchivoHelper.guardarEnArchivo("backup.txt", lineas);
     }
 
-    // Obtiene todas las reservaciones
     public List<Reservacion> obtenerTodasLasReservaciones() {
-        List<Reservacion> reservaciones = new ArrayList<>();
-        // Leer las líneas existentes del archivo
-        List<String> lineas = ArchivoHelper.leerDesdeArchivo(ARCHIVO_DATOS);
-        for (String linea : lineas) {
+        List<Reservacion> reservaciones = new ArrayList();
+        List<String> lineas = ArchivoHelper.leerDesdeArchivo("backup.txt");
+        Iterator var3 = lineas.iterator();
+
+        while(var3.hasNext()) {
+            String linea = (String)var3.next();
             String[] partes = linea.split(";");
-            // Si la línea representa una reservación, se crea y se añade a la lista de reservaciones
             if (partes[0].equals("RESERVACION")) {
                 try {
                     Date fecha = sdf.parse(partes[3]);
                     reservaciones.add(new Reservacion(partes[1], partes[2], fecha, Integer.parseInt(partes[4])));
-                } catch (Exception e) {
+                } catch (Exception var7) {
+                    Exception e = var7;
                     e.printStackTrace();
                 }
             }
         }
-        return reservaciones; // Retornar la lista de reservaciones
+
+        return reservaciones;
     }
 }

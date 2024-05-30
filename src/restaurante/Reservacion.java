@@ -1,16 +1,16 @@
 package restaurante;
+
+
 import java.io.Serializable;
 import java.util.Date;
 
 public class Reservacion implements Serializable {
     private static final long serialVersionUID = 1L;
-    
     private String id;
     private String clienteId;
     private Date fecha;
     private int numeroPersonas;
 
-    // Constructor de la clase Reservacion
     public Reservacion(String id, String clienteId, Date fecha, int numeroPersonas) {
         this.id = id;
         this.clienteId = clienteId;
@@ -18,9 +18,8 @@ public class Reservacion implements Serializable {
         this.numeroPersonas = numeroPersonas;
     }
 
-    // Métodos Getters y Setters
     public String getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(String id) {
@@ -28,7 +27,7 @@ public class Reservacion implements Serializable {
     }
 
     public String getClienteId() {
-        return clienteId;
+        return this.clienteId;
     }
 
     public void setClienteId(String clienteId) {
@@ -36,7 +35,7 @@ public class Reservacion implements Serializable {
     }
 
     public Date getFecha() {
-        return fecha;
+        return this.fecha;
     }
 
     public void setFecha(Date fecha) {
@@ -44,20 +43,15 @@ public class Reservacion implements Serializable {
     }
 
     public int getNumeroPersonas() {
-        return numeroPersonas;
+        return this.numeroPersonas;
     }
 
     public void setNumeroPersonas(int numeroPersonas) {
         this.numeroPersonas = numeroPersonas;
     }
-    
-    @Override
+
     public String toString() {
-        return "Reservacion{" +
-                "id='" + id + '\'' +
-                ", DPI='" + clienteId + '\'' +
-                ", fecha=" + fecha +
-                ", Numero Personas=" + numeroPersonas +
-                '}';
+        String var10000 = this.id;
+        return "Reservacion{id='" + var10000 + "', DPI='" + this.clienteId + "', fecha=" + String.valueOf(this.fecha) + ", Numero Personas=" + this.numeroPersonas + "}";
     }
 }

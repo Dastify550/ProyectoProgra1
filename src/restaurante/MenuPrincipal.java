@@ -1,21 +1,31 @@
 package restaurante;
+
+
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Collection;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.Scanner;
 
 public class MenuPrincipal {
-    private static Scanner scanner = new Scanner(System.in);
-    private static SistemaReservaciones sistema = new SistemaReservaciones();
-    private static SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+    private static Scanner scanner;
+    private static SistemaReservaciones sistema;
+    private static SimpleDateFormat sdf;
+
+    public MenuPrincipal() {
+    }
 
     public static void main(String[] args) {
         boolean salir = false;
 
-        while (!salir) {
+        while(!salir) {
             imprimirMenu();
             int opcion = scanner.nextInt();
-            scanner.nextLine();  // Consume newline
-
+            scanner.nextLine();
             switch (opcion) {
+                case 0:
+                    salir = true;
+                    break;
                 case 1:
                     agregarCliente();
                     break;
@@ -52,16 +62,13 @@ public class MenuPrincipal {
                 case 12:
                     importarDatos();
                     break;
-                case 0:
-                    salir = true;
-                    break;
                 default:
                     System.out.println("Opción no válida.");
             }
         }
+
     }
 
-    // Imprimir el menú principal
     private static void imprimirMenu() {
         System.out.println("------ Sistema de Reservaciones ------");
         System.out.println("1. Agregar Cliente");
@@ -80,7 +87,6 @@ public class MenuPrincipal {
         System.out.print("Seleccione una opcion: ");
     }
 
-    // Agregar un nuevo cliente
     private static void agregarCliente() {
         System.out.print("ID: ");
         String id = scanner.nextLine();
@@ -90,13 +96,11 @@ public class MenuPrincipal {
         String telefono = scanner.nextLine();
         System.out.print("Correo: ");
         String correo = scanner.nextLine();
-
         Cliente cliente = new Cliente(id, nombre, telefono, correo);
         sistema.agregarCliente(cliente);
         System.out.println("Cliente agregado.");
     }
 
-    // Ver un cliente por su ID
     private static void verCliente() {
         System.out.print("ID del Cliente: ");
         String id = scanner.nextLine();
@@ -106,9 +110,9 @@ public class MenuPrincipal {
         } else {
             System.out.println("Cliente no encontrado.");
         }
+
     }
 
-    // Actualizar un cliente existente
     private static void actualizarCliente() {
         System.out.print("ID del Cliente: ");
         String id = scanner.nextLine();
@@ -120,7 +124,6 @@ public class MenuPrincipal {
             String telefono = scanner.nextLine();
             System.out.print("Nuevo Correo: ");
             String correo = scanner.nextLine();
-
             cliente.setNombre(nombre);
             cliente.setTelefono(telefono);
             cliente.setCorreo(correo);
@@ -129,9 +132,9 @@ public class MenuPrincipal {
         } else {
             System.out.println("Cliente no encontrado.");
         }
+
     }
 
-    // Eliminar un cliente por su ID
     private static void eliminarCliente() {
         System.out.print("ID del Cliente: ");
         String id = scanner.nextLine();
@@ -142,33 +145,33 @@ public class MenuPrincipal {
         } else {
             System.out.println("Cliente no encontrado.");
         }
+
     }
 
-    // Agregar una nueva reservación
     private static void agregarReservacion() {
         System.out.print("ID de la Reservacion: ");
         String id = scanner.nextLine();
         System.out.print("ID del Cliente: ");
         String clienteId = scanner.nextLine();
-        System.out.print("Fecha (dd-MM-yyyy): ");
+        System.out.print("Fecha (yyyy-MM-dd): ");
         String fechaString = scanner.nextLine();
         Date fecha = null;
+
         try {
             fecha = sdf.parse(fechaString);
-        } catch (Exception e) {
+        } catch (Exception var6) {
             System.out.println("Formato de fecha incorrecto.");
             return;
         }
+
         System.out.print("Numero de Personas: ");
         int numeroPersonas = scanner.nextInt();
-        scanner.nextLine();  // Consume newline
-
+        scanner.nextLine();
         Reservacion reservacion = new Reservacion(id, clienteId, fecha, numeroPersonas);
         sistema.agregarReservacion(reservacion);
         System.out.println("Reservacion agregada.");
     }
 
-    // Ver una reservación por su ID
     private static void verReservacion() {
         System.out.print("ID de la Reservacion: ");
         String id = scanner.nextLine();
@@ -178,9 +181,9 @@ public class MenuPrincipal {
         } else {
             System.out.println("Reservación no encontrada.");
         }
+
     }
 
-    // Actualizar una reservación existente
     private static void actualizarReservacion() {
         System.out.print("ID de la Reservacion: ");
         String id = scanner.nextLine();
@@ -188,19 +191,20 @@ public class MenuPrincipal {
         if (reservacion != null) {
             System.out.print("Nuevo ID del Cliente: ");
             String clienteId = scanner.nextLine();
-            System.out.print("Nueva Fecha (dd-MM-yyyy): ");
+            System.out.print("Nueva Fecha (yyyy-MM-dd): ");
             String fechaString = scanner.nextLine();
             Date fecha = null;
+
             try {
                 fecha = sdf.parse(fechaString);
-            } catch (Exception e) {
+            } catch (Exception var6) {
                 System.out.println("Formato de fecha incorrecto.");
                 return;
             }
+
             System.out.print("Nuevo Número de Personas: ");
             int numeroPersonas = scanner.nextInt();
-            scanner.nextLine();  // Consume newline
-
+            scanner.nextLine();
             reservacion.setClienteId(clienteId);
             reservacion.setFecha(fecha);
             reservacion.setNumeroPersonas(numeroPersonas);
@@ -209,9 +213,9 @@ public class MenuPrincipal {
         } else {
             System.out.println("Reservación no encontrada.");
         }
+
     }
 
-    // Eliminar una reservación por su ID
     private static void eliminarReservacion() {
         System.out.print("ID de la Reservacion: ");
         String id = scanner.nextLine();
@@ -222,33 +226,44 @@ public class MenuPrincipal {
         } else {
             System.out.println("Reservación no encontrada.");
         }
+
     }
 
-    // Ver todos los clientes
     private static void verTodosLosClientes() {
         Collection<Cliente> clientes = sistema.obtenerTodosLosClientes();
-        for (Cliente cliente : clientes) {
+        Iterator var1 = clientes.iterator();
+
+        while(var1.hasNext()) {
+            Cliente cliente = (Cliente)var1.next();
             System.out.println(cliente);
         }
+
     }
 
-    // Ver todas las reservaciones
     private static void verTodasLasReservaciones() {
         Collection<Reservacion> reservaciones = sistema.obtenerTodasLasReservaciones();
-        for (Reservacion reservacion : reservaciones) {
+        Iterator var1 = reservaciones.iterator();
+
+        while(var1.hasNext()) {
+            Reservacion reservacion = (Reservacion)var1.next();
             System.out.println(reservacion);
         }
+
     }
 
-    // Exportar los datos a un archivo
     private static void exportarDatos() {
         sistema.exportarDatos("backup");
         System.out.println("Datos exportados exitosamente a backup.txt");
     }
 
-    // Importar los datos desde un archivo
     private static void importarDatos() {
         sistema.importarDatos("backup");
         System.out.println("Datos importados exitosamente desde backup.txt");
+    }
+
+    static {
+        scanner = new Scanner(System.in);
+        sistema = new SistemaReservaciones();
+        sdf = new SimpleDateFormat("yyyy-MM-dd");
     }
 }
