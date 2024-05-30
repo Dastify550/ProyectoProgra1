@@ -14,6 +14,9 @@ public class SistemaReservacionesSwing extends JFrame {
     private SistemaReservaciones sistema; // Instancia o concecion de nuestra clase del sistema de reservaciones
     private SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy"); // Formato de fecha
 
+    // hola carlos madfaka
+    
+    
     // Componentes de la interfaz gráfica
     private JTextField idClienteField, nombreClienteField, telefonoClienteField, correoClienteField;
     private JTextField idReservacionField, clienteIdReservacionField, fechaReservacionField, numeroPersonasReservacionField;
