@@ -2,3 +2,4 @@ CLIENTE;3761717091227;Sara Lopez;30389870;sara.lopez@example.com
 CLIENTE;6701610311213;Jorge Diaz Pedro;38483272;jorge.diaz@example.com
 CLIENTE;4682196705666;Juan Perez;31058600;juan.perez@example.com
 CLIENTE;7974066210910;Gabriel Paredes;38806590;gabriel.paredes@example.com
+CLIENTE;;;;
