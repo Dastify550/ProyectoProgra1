@@ -6,7 +6,7 @@ import java.util.*;
 public class SistemaReservaciones {
     private ClienteDAO clienteDAO;
     private ReservacionDAO reservacionDAO;
-    private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    private static final SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 
     // Constructor de la clase SistemaReservaciones
     public SistemaReservaciones() {

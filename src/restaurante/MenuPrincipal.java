@@ -5,7 +5,7 @@ import java.util.*;
 public class MenuPrincipal {
     private static Scanner scanner = new Scanner(System.in);
     private static SistemaReservaciones sistema = new SistemaReservaciones();
-    private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    private static SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 
     public static void main(String[] args) {
         boolean salir = false;
@@ -150,7 +150,7 @@ public class MenuPrincipal {
         String id = scanner.nextLine();
         System.out.print("ID del Cliente: ");
         String clienteId = scanner.nextLine();
-        System.out.print("Fecha (yyyy-MM-dd): ");
+        System.out.print("Fecha (dd-MM-yyyy): ");
         String fechaString = scanner.nextLine();
         Date fecha = null;
         try {
@@ -188,7 +188,7 @@ public class MenuPrincipal {
         if (reservacion != null) {
             System.out.print("Nuevo ID del Cliente: ");
             String clienteId = scanner.nextLine();
-            System.out.print("Nueva Fecha (yyyy-MM-dd): ");
+            System.out.print("Nueva Fecha (dd-MM-yyyy): ");
             String fechaString = scanner.nextLine();
             Date fecha = null;
             try {

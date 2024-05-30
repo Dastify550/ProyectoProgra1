@@ -10,6 +10,7 @@ public class Cliente implements Serializable {
     private String telefono;
     private String correo;
 
+    // constructor
     public Cliente(String id, String nombre, String telefono, String correo) {
         this.id = id;
         this.nombre = nombre;
