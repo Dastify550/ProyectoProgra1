@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -41,6 +42,8 @@ public class SistemaReservacionesSwing extends JFrame {
         this.setSize(1200, 800);
         this.setDefaultCloseOperation(3);
         this.setLayout(new BorderLayout());
+     setIconImage(new ImageIcon(getClass().getResource("/restaurante/icono.png")).getImage());
+
         JPanel panelSuperior = this.crearPanelSuperior();
         JPanel panelInferior = this.crearPanelInferior();
         this.clientesTableModel = new DefaultTableModel(new String[]{"ID", "Nombre", "Teléfono", "Correo"}, 0);
