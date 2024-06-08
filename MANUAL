@@ -1,1 +1,321 @@
 ///solo se comenta
+//ManualRequerimientos mínimos
+La aplicación SISTEMA DE RESERVACIONES
+Hardware:
+
+•	Procesador 1.0 GHz
+
+•	RAM 512 Mb
+
+
+Sistemas Operativos:
+
+•	Windows (11,10, 8.1,)
+
+•	Java Virtual Machine (JVM)
+ 
+
+Guía de uso
+
+
+Ingreso al Sistema
+
+Abrimos nuestra aplicación, previamente ya adquirida
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Interfaz principal
+
+Esta interfaz contiene las principales funcionalidades del sistema, que son: Agregar Cliente, Actualizar Cliente, Ver todos los clientes, Ver cliente, Eliminar cliente, Agregar Reservación, actualizar reservación ver todas las reservaciones, imprimir datos, ver reservación, eliminar reservación, exportar datos
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Agregar cliente
+
+Para Agregar un cliente el usuario procederá a dar clic en el botón “Agregar cliente” que se encuentra en la “Interfaz principal”
+
+Para realizar el registro de un cliente se muestra el siguiente formulario, donde se deben llenar todos los campos de manera correcta para poder agregar a un nuevo cliente.
+
+
+ 
+
+
+
+
+
+
+
+Para poder Agregar un cliente de manera correcta se deben tomar en cuenta los siguientes puntos importantes:
+•	ID de cliente: se introduce el id del cliente o código de identificación que se definio
+•	Nombre: se escribe el nombre del cliente, esto es con nombre y apellifo
+•	Telefono se escribe el numero de teléfono del cliente
+•	Correo: se escribe correo electrónico del cliente el correo electrónico debe ser escrito correctamente si lo tiene para futuras notificaciones 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Si los datos son correctos mostrara el siguiente mensaje.
+
+
+ 
+
+Agregar reservación
+
+Ya agregada la reservación se procede a agregar la reservación
+Ingresamos ID de reservación
+Ingresamos Id de Cliente
+Ingresamos la fecha
+Numero de personas que van a llegar
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NOTA*
+Agregar de manera correcta la fecha separación con -
+
+ 
+
+
+
+
+
+Visualizar reservaciones
+
+
+
+Para poder ver una reservación es necesario darle Click en ver reservación
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Esto sucederá, se muestra las reservaciones hechas. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+En esta misma tendremos las opciones
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Ver reservación: como anteriormente ya se describió vemos la reservación que hicimos.
+
+Eliminar reservación: en esta opción podemos eliminar alguna reservación ya hecha.
+
+
+Exportar datos: En la siguiente exportamos los datos o bien  para proceder a guardarlos estos se guardan en nuestro backup
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+FAQ (Frequently Asked Questions)
+
+
+¿Se puede iniciar sesión con otro usuario?
+No, no se puede solo el ya mencionado, esto para tener un mejor control en la aplicación.
+
+¿Se hacer una reservacion sin estar registrado? No, para pedir una reservación forzosamente tiene que estar registrado en la aplicación de lo contrario no habrá forma de hacer una reservación
+
+
+¿Existe alguna forma de modificar los datos personales del cliente? Si, en la aplicación se encuentra una opción para poder editar los datos personales de cada cliente. En la opción ver cliente, ahí mismo se puede editar
+
+¿Qué pasa si busco un cliente que no existe  en solicitar una reservacion? Se mostrará un mensaje que el folio no existe, y no se le dejará pasar hasta que     introduzca el id correcto
+ 
+
+¿Qué pasa si no lleno el campo de Id? La aplicación no dejara que siga y se mostrará un mensaje de advertencia de que falta llenar el campo Id de Cliente
+
+¿Qué ocurre cuando meto algún dato erróneo en un campo que no va? Se valida que no haya datos mal, la aplicación no dejara que siga y mostrará un mensaje de advertencia con los campos que estén mal.
+
+.
+ 
+
+Contacto
+
+
+Si requiere información y/o soporte sobre el Programa o estás interesado en su  distribución, dejamos la siguiente información para que te pongas en contacto con nosotros.
+Muchas gracias.
+
+
+
+Sede:
+
+Universidad Mariano Galvez de Guatenaka
+
+
+
+Teléfono:
+
+-------------------------------
+
+
+
+Soporte:
+
